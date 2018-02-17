@@ -3,7 +3,7 @@ import time
 
 class Game:
 
-    basekeys = ['1','2','3','4','5','6','7','8','9','!','.',"'",'"',',','-',':',';','?']
+    basekeys = ['1','2','3','4','5','6','7','8','9','!','.',"'",'"',',','-',':',';','?','s','f']
 
     def get_valid_buttons(self):
         return self.basekeys
@@ -15,5 +15,14 @@ class Game:
         return button
 
     def push_button(self, button):
-        pyautogui.keyDown(button)
-        pyautogui.keyUp(button)
+		if button == 's':
+			pyautogui.hotkey('alt', 'enter')
+		elif button == 'f':
+			pyautogui.hotkey('ctrl', 'a')
+			pyautogui.hotkey('ctrl', 'c')
+			
+		else:
+			pyautogui.keyDown(button)
+			pyautogui.keyUp(button)
+	
+	def 
