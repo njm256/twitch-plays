@@ -1,4 +1,4 @@
-import time
+import time, random
 
 from config.config import config
 from lib.irc import Irc
@@ -26,7 +26,8 @@ class Bot:
             if not new_messages:
                 continue
 
-            for message in new_messages: 
+            #for message in new_messages:
+                message = random.choice(new_messages)
                 button = message['message'].lower()
                 username = message['username'].lower()
 
@@ -42,3 +43,4 @@ class Bot:
                 self.set_message_buffer({'username': username, 'button': button})
                 pbutton(self.message_buffer)
                 self.game.push_button(button)
+            time.sleep(8)
