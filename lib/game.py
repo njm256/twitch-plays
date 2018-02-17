@@ -20,7 +20,7 @@ class Game:
 		elif button == 'f':
 			pyautogui.hotkey('ctrl', 'a')
 			pyautogui.hotkey('ctrl', 'c')
-			
+			pyautogui.hotkey('ctrl', 'end')
 		else:
 			pyautogui.keyDown(button)
 			pyautogui.keyUp(button)
