@@ -5,6 +5,7 @@ from lib.irc import Irc
 from lib.game import Game
 from lib.misc import pbutton
 
+
 class Bot:
 
     def __init__(self):
@@ -42,4 +43,4 @@ class Bot:
                 self.set_message_buffer({'username': username, 'button': button})
                 pbutton(self.message_buffer)
                 self.game.push_button(button)
-            #time.sleep(8)
+            # time.sleep(8)

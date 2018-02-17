@@ -2,9 +2,11 @@ import sys
 import time
 import os
 
+
 def clear():
     os.system('cls' if os.name == 'nt' else 'clear')
     print('\n')
+
 
 days = 0
 hours = 0

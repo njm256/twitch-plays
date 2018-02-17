@@ -14,7 +14,7 @@ class Game:
     def button_to_key(self, button):
         return button
 
-    def push_button(self, button):
+	def push_button(self, button):
 		if button == 's':
 			pyautogui.hotkey('alt', 'enter')
 		elif button == 'f':
@@ -24,5 +24,3 @@ class Game:
 		else:
 			pyautogui.keyDown(button)
 			pyautogui.keyUp(button)
-	
-	def 
