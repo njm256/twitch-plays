@@ -42,4 +42,4 @@ class Bot:
                 self.set_message_buffer({'username': username, 'button': button})
                 pbutton(self.message_buffer)
                 self.game.push_button(button)
-            time.sleep(8)
+            #time.sleep(8)

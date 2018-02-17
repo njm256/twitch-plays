@@ -1,48 +1,19 @@
-import win32api
-import win32con
+import pyautogui
 import time
 
 class Game:
 
-    keymap = {
-        '1':0x61,
-        '2':0x62,
-        '3':0x63,
-        '4':0x64,
-        '5':0x65,
-        '6':0x66,
-        '7':0x67,
-        '8':0x68,
-        '9':0x69,
-		'.':0xBE,
-		',':0xBC,
-		'?':0xBF,
-		'-':0xBD,
-		'\'':0xDE,
-		';':0xBA,
-        '!':0x60,
-        'Shuffle':0x60
-    }
+    basekeys = ['1','2','3','4','5','6','7','8','9','!','.',"'",'"',',','-',':',';','?']
 
     def get_valid_buttons(self):
-        return [button for button in self.keymap.keys()]
+        return self.basekeys
 
     def is_valid_button(self, button):
-        return button in self.keymap.keys()
+        return button in self.basekeys
 
     def button_to_key(self, button):
-        return self.keymap[button]
+        return button
 
     def push_button(self, button):
-        if button in ['!']:
-            print 'made it here!'
-	    win32api.keybd_event(0xA0, 0,1,0)
-	    time.sleep(.1)
-            win32api.keybd_event(0x61, 0,1,0)
-            time.sleep(.05)
-            win32api.keybd_event(0x61,0 ,2 ,0)
-            win32api.keybd_event(0xA0,0 ,2 ,0)
-        else:
-            win32api.keybd_event(self.button_to_key(button), 0, 0, 0)
-            time.sleep(.15)
-            win32api.keybd_event(self.button_to_key(button), 0, win32con.KEYEVENTF_KEYUP, 0)
+        pyautogui.keyDown(button)
+        pyautogui.keyUp(button)
