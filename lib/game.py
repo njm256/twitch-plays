@@ -14,6 +14,12 @@ class Game:
         '7':0x67,
         '8':0x68,
         '9':0x69
+		'.':0xBE
+		',':0xBC
+		'?':0xBF
+		'-':0xBD
+		'\'':0xDE
+		';':0xBA
     }
 
     def get_valid_buttons(self):
