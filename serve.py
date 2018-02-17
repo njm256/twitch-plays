@@ -6,7 +6,8 @@ import lib.bot as bot
 
 # Twitch Plays
 # Inpsired by http://twitch.tv/twitchplayspokemon
-# Written by Aidan Thomson - <aidraj0 at gmail dot com>
+# Originally written by Aidan Thomson - <aidraj0 at gmail dot com>
+# Shamelessly coopted for hackathon project
 
 try:
     bot.Bot().run()

@@ -26,8 +26,7 @@ class Bot:
             if not new_messages:
                 continue
 
-            #for message in new_messages:
-                message = random.choice(new_messages)
+            for message in new_messages:
                 button = message['message'].lower()
                 username = message['username'].lower()
 

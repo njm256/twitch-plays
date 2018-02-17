@@ -19,7 +19,9 @@ class Game:
 		'?':0xBF,
 		'-':0xBD,
 		'\'':0xDE,
-		';':0xBA
+		';':0xBA,
+        '!':0x60,
+        'Shuffle':0x60
     }
 
     def get_valid_buttons(self):
@@ -32,6 +34,15 @@ class Game:
         return self.keymap[button]
 
     def push_button(self, button):
-        win32api.keybd_event(self.button_to_key(button), 0, 0, 0)
-        time.sleep(.15)
-        win32api.keybd_event(self.button_to_key(button), 0, win32con.KEYEVENTF_KEYUP, 0)
+        if button in ['!']:
+            win32api.keybd_event(0x10, 0, 0, 0)
+            time.sleep(.15)
+            win32api.keybd_event(0x61, 0, 0, 0)
+            time.sleep(.05)
+            win32api.keybd_event(0x61, 0, win32con.KEYEVENTF_KEYUP, 0)
+            time.sleep(.05)
+            win32api.keybd_event(0x10, 0, win32con.KEYEVENTF_KEYUP, 0)
+        else:
+            win32api.keybd_event(self.button_to_key(button), 0, 0, 0)
+            time.sleep(.15)
+            win32api.keybd_event(self.button_to_key(button), 0, win32con.KEYEVENTF_KEYUP, 0)
