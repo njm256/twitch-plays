@@ -14,7 +14,7 @@ class Game:
         '7':0x67,
         '8':0x68,
         '9':0x69,
-		'period':0xBE,
+		'.':0xBE,
 		',':0xBC,
 		'?':0xBF,
 		'-':0xBD,
@@ -36,7 +36,7 @@ class Game:
     def push_button(self, button):
         if button in ['!']:
             win32api.keybd_event(0x10, 0, 0, 0)
-            time.sleep(.15)
+            time.sleep(.5)
             win32api.keybd_event(0x61, 0, 0, 0)
             time.sleep(.05)
             win32api.keybd_event(0x61, 0, win32con.KEYEVENTF_KEYUP, 0)
