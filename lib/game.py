@@ -35,11 +35,13 @@ class Game:
 
     def push_button(self, button):
         if button in ['!']:
-			win32api.keybd_event(0xA0, 0,0,0)
-            win32api.keybd_event(0x61, 0,0,0)
+            print 'made it here!'
+	    win32api.keybd_event(0xA0, 0,1,0)
+	    time.sleep(.1)
+            win32api.keybd_event(0x61, 0,1,0)
             time.sleep(.05)
-            win32api.keybd_event(0xA0,0 ,win32con.KEYEVENTF_KEYUP ,0)
-            win32api.keybd_event(0x61,0 ,win32con.KEYEVENTF_KEYUP ,0)
+            win32api.keybd_event(0x61,0 ,2 ,0)
+            win32api.keybd_event(0xA0,0 ,2 ,0)
         else:
             win32api.keybd_event(self.button_to_key(button), 0, 0, 0)
             time.sleep(.15)
