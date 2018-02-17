@@ -14,13 +14,13 @@ class Game:
     def button_to_key(self, button):
         return button
 
-	def push_button(self, button):
-		if button == 's':
-			pyautogui.hotkey('alt', 'enter')
-		elif button == 'f':
-			pyautogui.hotkey('ctrl', 'a')
-			pyautogui.hotkey('ctrl', 'c')
-			pyautogui.hotkey('ctrl', 'end')
-		else:
-			pyautogui.keyDown(button)
-			pyautogui.keyUp(button)
+    def push_button(self, button):
+        if button == 's':
+            pyautogui.hotkey('alt', 'enter')
+        elif button == 'f':
+            pyautogui.hotkey('ctrl', 'a')
+            pyautogui.hotkey('ctrl', 'c')
+            pyautogui.hotkey('ctrl', 'end')
+        else:
+            pyautogui.keyDown(button)
+            pyautogui.keyUp(button)

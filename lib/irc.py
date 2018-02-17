@@ -4,6 +4,7 @@ import re
 
 from lib.misc import pp, pbot
 
+
 class Irc:
 
     socket_retry_count = 0
@@ -37,9 +38,9 @@ class Irc:
 
         sock.settimeout(None)
 
-        sock.send('USER %s\r\n' % username)
-        sock.send('PASS %s\r\n' % password)
-        sock.send('NICK %s\r\n' % username)
+        sock.send(str.encode('USER ' + str(username) + '\r\n'))
+        sock.send(str.encode('PASS  ' + str(password) + '\r\n'))
+        sock.send(str.encode('NICK  ' + str(username) + '\r\n'))
 
         if not self.check_login_status(self.recv()):
             pp('Invalid login.', 'error')
@@ -47,11 +48,11 @@ class Irc:
         else:
             pp('Login successful!')
 
-        sock.send('JOIN #%s\r\n' % username)
-        pp('Joined #%s' % username)
+        sock.send(str.encode('JOIN #' + str(username) + '\r\n'))
+        pp('Joined #' + str(username))
 
     def ping(self, data):
-        if data.startswith('PING'):
+        if str(data).startswith('PING'):
             self.sock.send(data.replace('PING', 'PONG'))
 
     def recv(self, amount=1024):
@@ -69,12 +70,12 @@ class Irc:
         if self.check_has_message(data):
             return [self.parse_message(line) for line in filter(None, data.split('\r\n'))]
 
-
     def check_login_status(self, data):
-        if not re.match(r'^:(testserver\.local|tmi\.twitch\.tv) NOTICE \* :Login unsuccessful\r\n$', data): return True
+        if not re.match(r'^:(testserver\.local|tmi\.twitch\.tv) NOTICE \* :Login unsuccessful\r\n$', str(data)):
+            return True
 
     def check_has_message(self, data):
-        return re.match(r'^:[a-zA-Z0-9_]+\![a-zA-Z0-9_]+@[a-zA-Z0-9_]+(\.tmi\.twitch\.tv|\.testserver\.local) PRIVMSG #[a-zA-Z0-9_]+ :.+$', data)
+        return re.match(r'^:[a-zA-Z0-9_]+\![a-zA-Z0-9_]+@[a-zA-Z0-9_]+(\.tmi\.twitch\.tv|\.testserver\.local) PRIVMSG #[a-zA-Z0-9_]+ :.+$', str(data))
 
     def parse_message(self, data): 
         return {
