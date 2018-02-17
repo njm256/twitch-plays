@@ -5,14 +5,15 @@ import time
 class Game:
 
     keymap = {
-        'up': 0x30,
-        'down': 0x31,
-        'left': 0x32,
-        'right': 0x33,
-        'a': 0x34,
-        'b': 0x35,
-        'start': 0x36,
-        'select': 0x37
+        '1':0x61,
+        '2':0x62,
+        '3':0x63,
+        '4':0x64,
+        '5':0x65,
+        '6':0x66,
+        '7':0x67,
+        '8':0x68,
+        '9':0x69
     }
 
     def get_valid_buttons(self):
