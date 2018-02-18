@@ -1,0 +1,6 @@
+.DS_STORE
+*.pyc
+config/config.py
+*.xml
+.idea/workspace.xml
+*.xml
