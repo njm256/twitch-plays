@@ -1,10 +1,13 @@
 import pyautogui
 import time
+import win32com.client as wincl
+import win32clipboard
 
 
 class Game:
 
     base_keys = ['1','2','3','4','5','6','7','8','9','!','.',"'",'"',',','-',':',';','?','s','f']
+    speak = wincl.Dispatch("SAPI.SpVoice")
 
     def get_valid_buttons(self):
         return self.base_keys
@@ -23,6 +26,9 @@ class Game:
             pyautogui.hotkey('ctrl', 'c')
             time.sleep(.05)
             pyautogui.hotkey('ctrl', 'end')
+            win32clipboard.OpenClipboard()
+            self.speak.Speak(win32clipboard.GetClipboardData())
+            win32clipboard.CloseClipboard()
         else:
             pyautogui.keyDown(button)
             pyautogui.keyUp(button)

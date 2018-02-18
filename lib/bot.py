@@ -4,6 +4,7 @@ from config.config import config
 from lib.irc import Irc
 from lib.game import Game
 from lib.misc import pbutton
+import win32com.client as wincl
 
 
 class Bot:
