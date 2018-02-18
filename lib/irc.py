@@ -77,7 +77,7 @@ class Irc:
     def check_has_message(self, data):
         return re.match(r'^:[a-zA-Z0-9_]+\![a-zA-Z0-9_]+@[a-zA-Z0-9_]+(\.tmi\.twitch\.tv|\.testserver\.local) PRIVMSG #[a-zA-Z0-9_]+ :.+$', data.decode())
 
-    def parse_message(self, data):
+    def parse_message(self, data): # Unchanged in move to py3, I think
         return {
             'channel': re.findall(r'^:.+\![a-zA-Z0-9_]+@[a-zA-Z0-9_]+.+ PRIVMSG (.*?) :', data)[0],
             'username': re.findall(r'^:([a-zA-Z0-9_]+)\!', data)[0],
